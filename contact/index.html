@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Contact</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-primary sticky-top mb-3">
+            <nav class="col-12 col-md-8 col-lg-6 navbar navbar-dark navbar-expand-md bg-primary mx-auto">
+                <a class="navbar-brand text-white" href="#">
+                    <h4>Contact</h4>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#GroupToggler"
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <input type="text" class="form-control my-2 my-md-0 d-block" name="search" id="search">
+                <div class="collapse navbar-collapse text-nowrap" id="GroupToggler">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-link="all">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-link="family">Family</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-link="work">Work</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-link="friend">Friend</a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-link="add" href="#" class="nav-link d-flex align-items-center">
+                                <i class="material-icons d-md-inline d-none mr-1">
+                                    add_circle
+                                </i>
+                                <span class="d-md-none d-inline">Add new contact</span> 
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6 mx-auto">
+                <div class="d-block" id="content">
+
+                </div>
+                <form id="form" class="d-none">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" rows="6" id="address" name="address"></textarea>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="phone">Phone</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">
+                                        phone
+                                    </i>
+                                </div>
+
+                            </div>
+                            <input type="tel" class="form-control" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group" id="form-group">
+                        <label>Group</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="group" id="family" value="family">
+                            <label for="family">Family</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="group" id="work" value="work">
+                            <label for="work">Work</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="group" id="friend" value="friend">
+                            <label for="friend">Friend</label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <button id="submit" class="btn btn-primary mr-3">Submit</button>
+                        <a id="cancel" href="#" class="text-decoration-none">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="script/script.js"></script>
+</body>
+
+</html>

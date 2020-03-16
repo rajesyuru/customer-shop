@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid bg-light">
+        <div class="row sticky-top">
+            <div class="col-12 navbar navbar-dark navbar-expand-md bg-primary sticky-top" id="navbar">
+                <a href="#" class="navbar-brand text-white" id="home">
+                    <h5>Pasar Online</h5>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="d-flex w-100 align-items-center">
+                    <form action="#" class="w-100" id="search">
+                        <div class="form-group mb-0 p-0 mr-0">
+                            <div class="input-group my-2 my-md-0 align-items-center">
+                                <input type="text" class="form-control" id="search" name="search">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary border-0 py-1 justify-content-center"
+                                        id="submit">
+                                        <i class="material-icons">
+                                            search
+                                        </i>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="#" class="btn ml-1 d-flex position-relative" id="navWishlist">
+                        <i class="material-icons text-white">favorite</i>
+                        <span id="badgeWishlist" class="badge badge-pill badge-danger position-absolute" style="right: 1px; top: 1px;">1</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-3 d-md-block mt-3 collapse show" id="sidebar">
+                        <form action="#" id="formFilter">
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="cat" id="all" name="all"
+                                        value="all" checked>
+                                    <label for="all">Semua</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="cat" id="electronic"
+                                        name="electronic" value="electronic">
+                                    <label for="electronic">Elektronik</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="cat" id="fashion" name="fashion"
+                                        value="fashion">
+                                    <label for="fashion">Fashion</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="cat" id="kitchen" name="kitchen"
+                                        value="kitchen">
+                                    <label for="kitchen">Dapur</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="cat" id="gaming" name="gaming"
+                                        value="gaming">
+                                    <label for="gaming">Gaming</label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label>Lokasi</label>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterJakartaPusat" id="filterJakartaPusat"
+                                        value="jakarta-pusat" class="form-check-input cbFilter">
+                                    <label for="filterJakartaPusat">Jakarta Pusat</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterJakartaUtara" id="filterJakartaUtara"
+                                        value="jakarta-utara" class="form-check-input cbFilter">
+                                    <label for="filterJakartaUtara">Jakarta Utara</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterJakartaTimur" id="filterJakartaTimur"
+                                        value="jakarta-timur" class="form-check-input cbFilter">
+                                    <label for="filterJakartaTimur">Jakarta Timur</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterJakartaSelatan" id="filterJakartaSelatan"
+                                        value="jakarta-selatan" class="form-check-input cbFilter">
+                                    <label for="filterJakartaSelatan">Jakarta Selatan</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterJakartaBarat" id="filterJakartaBarat"
+                                        value="jakarta-barat" class="form-check-input cbFilter">
+                                    <label for="filterJakartaBarat">Jakarta Barat</label>
+                                </div>
+                                <hr>
+                                <label>Penawaran</label>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterGratong" id="filterGratong" value="gratong"
+                                        class="form-check-input cbFilter">
+                                    <label for="filterGratong">Gratis Ongkir</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterCashback" id="filterCashback" value="cashback"
+                                        class="form-check-input cbFilter">
+                                    <label for="filterCashback">Cashback</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="filterDisc" id="filterDisc" value="disc"
+                                        class="form-check-input cbFilter">
+                                    <label for="filterDisc">Diskon</label>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <label>Harga</label>
+                        <form action="#" id="price-min">      
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="Harga minimum"
+                                        name="price-min" id="price-min">
+                                </div>
+                            </div>
+                        </form>
+                        <form action="#" id="price-max">
+                            <div class="form-group">
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="Harga maksimum"
+                                        name="price-max" id="price-max">
+                                </div>
+                            </div>
+                        </form>
+                        <button type="button" class="btn btn-primary" id="btnReset">Reset</button>
+
+
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="content">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

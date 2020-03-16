@@ -1,0 +1,40 @@
+body {
+    background-color: cadetblue;
+    /* animation-name: rainbow; */
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+}
+
+.box {
+    background-color: crimson;
+    padding: 20px;
+    width: 70%;
+    margin: 23% auto;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    0% {transform: rotateZ(0deg); font-size: 10px;}
+    50% {transform: rotateZ(180deg); font-size: 200px;}
+    100% {transform: rotateZ(360deg); font-size: 10px;}
+}
+
+
+@keyframes rainbow {
+    0% {background-color: red;}
+    25% {background-color: green;}
+    50% {background-color: blue;}
+    75% {background-color: green;}
+    100% {background-color: red;}
+}

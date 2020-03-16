@@ -1,0 +1,35 @@
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    background-color: lightblue;
+    padding: 20px;
+}
+
+.shop {
+    min-height: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #efefef;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    
+    
+    
+}
+
+.eat {
+    display: flex;
+    align-items: center;
+}
+
+
