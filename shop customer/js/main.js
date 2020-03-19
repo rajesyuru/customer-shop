@@ -8,6 +8,7 @@ let CategoryFilter = 'all';
 let minPrice = null;
 let maxPrice = null;
 let WishListPage = false;
+let cartPage = false;
 
 if (localStorage.getItem('products') !== null ) {
     products = JSON.parse(localStorage.getItem('products'));
@@ -169,14 +170,36 @@ function getProd(product) {
                             alt="Diskon" title="Diskon">`
     }
 
+    let footer = document.createElement('div');
+    footer.classList.add('card-footer');
+
+    let addToCart = document.createElement('button');
+    addToCart.classList.add('btn');
+    addToCart.classList.add('btn-primary');
+    addToCart.classList.add('w-100');
+    addToCart.innerText = 'Add to cart';
+
+    footer.append(addToCart);
+
+    addToCart.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        
+    })
+
 
     body.append(offerings);
     
     
     card.append(body);
+    card.append(footer);
     col.append(card);
 
     return col;
+}
+
+function cardUpdate() {
+
 }
 
 function wishlistUpdate() {
@@ -188,10 +211,10 @@ function wishlistUpdate() {
         document.getElementById('badgeWishlist').classList.add('d-none');
     }
     
-} 
+}
 
 function showContent() {
-    let el = document.getElementById('content');
+    let el = document.getElementById('items-content');
 
     el.innerHTML = '';
 
@@ -236,6 +259,35 @@ function showContent() {
     })
 
     
+}
+
+function getShoppingCart(product) {
+    let col = document.createElement('div');
+    col.classList.add('col');
+    col.classList.add('mb-4');
+
+    let card = document.createElement('div');
+    card.classList.add('card');
+    card.classList.add('h-100');
+    card.classList.add('shadow-sm');
+
+    let cardRow = document.createElement('div');
+    cardRow.classList.add('row');
+    cardRow.classList.add('no-gutters');
+
+    let imgCol = document.createElement('div');
+    imgCol.classList.add('col-md-2');
+
+    let img = document.createElement('img');
+    img.src = product.prodimg;
+    img.alt = product.prodname;
+}
+
+function showShoppingCart() {
+    let lel = document.getElementById('content-shopping-carts');
+    lel.innerHTML = '';
+
+
 }
 
 document.getElementById('search').addEventListener('submit', function(e) {  
@@ -312,6 +364,35 @@ document.getElementById('formFilter').addEventListener('click', function() {
     
 })
 
+
+
+function changeContent() {
+
+    if (WishListPage === true) {
+
+        document.getElementById('navWishlist').style = 'background-color: #0069d9;'
+        document.getElementById('navCart').style = '';
+
+        document.getElementById('items-page').classList.remove('d-none');
+        document.getElementById('cart-page').classList.add('d-none');
+
+    } else if (cartPage === true) {
+
+        document.getElementById('navWishlist').style = ''
+        document.getElementById('navCart').style = 'background-color: #0069d9;';
+
+        document.getElementById('items-page').classList.add('d-none');
+        document.getElementById('cart-page').classList.remove('d-none');
+
+    } else {
+        document.getElementById('navWishlist').style = ''
+        document.getElementById('navCart').style = '';
+
+        document.getElementById('items-page').classList.remove('d-none');
+        document.getElementById('cart-page').classList.add('d-none');
+    }
+}
+
 document.getElementById('price-min').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -352,30 +433,48 @@ document.getElementById('btnReset').addEventListener('click', function(e) {
     showContent();
 })
 
-// Saat navWishlist dan home diklik, wishlist di products[0] jadi true
-
 document.getElementById('navWishlist').addEventListener('click', function(e) {
     e.preventDefault();
 
-    if (WishListPage !== true) {
+    if (WishListPage === false) {
         WishListPage = true;
-        document.getElementById('navWishlist').style = 'background-color: #0069d9;'
+        cartPage = false;
     } else {
         return;
     }
 
+    changeContent();
     showContent();
 })
 
 document.getElementById('home').addEventListener('click', function(e) {
     e.preventDefault();
 
-    if (WishListPage !== false) {
+    if (WishListPage === true || cartPage === true) {
         WishListPage = false;
-        document.getElementById('navWishlist').style = '';
+        cartPage = false;
     } else {
         return;
     }
+
+    console.log('this command doesnt run')
+
+    changeContent();
+
+    showContent();
+})
+
+document.getElementById('navCart').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    if (cartPage === false) {
+        cartPage = true;
+        WishListPage = false;
+    } else {
+        return;
+    }
+
+    changeContent();
 
     showContent();
 })

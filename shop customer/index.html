@@ -35,14 +35,20 @@
                                         <i class="material-icons">
                                             search
                                         </i>
-                                        
+
                                 </div>
                             </div>
                         </div>
                     </form>
                     <a href="#" class="btn ml-1 d-flex position-relative" id="navWishlist">
                         <i class="material-icons text-white">favorite</i>
-                        <span id="badgeWishlist" class="badge badge-pill badge-danger position-absolute" style="right: 1px; top: 1px;">1</span>
+                        <span id="badgeWishlist" class="badge badge-pill badge-danger position-absolute"
+                            style="right: 1px; top: 1px;">1</span>
+                    </a>
+                    <a href="#" class="btn ml-1 d-flex position-relative" id="navCart">
+                        <i class="material-icons text-white">shopping_cart</i>
+                        <span id="badgeCart" class="badge badge-pill badge-danger position-absolute"
+                            style="right: 1px; top: 1px;">1</span>
                     </a>
                 </div>
 
@@ -51,8 +57,8 @@
 
         <div class="row">
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-3 d-md-block mt-3 collapse show" id="sidebar">
+                <div class="row" id="items-page">
+                    <div class="col-12 col-md-3 d--md-block mt-3 collapse show" id="sidebar">
                         <form action="#" id="formFilter">
                             <div class="form-group">
                                 <label>Kategori</label>
@@ -131,7 +137,7 @@
                         </form>
                         <hr>
                         <label>Harga</label>
-                        <form action="#" id="price-min">      
+                        <form action="#" id="price-min">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -158,9 +164,45 @@
 
                     </div>
                     <div class="col-12 col-md-9">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="content">
+                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="items-content">
 
 
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-none" id="cart-page">
+                    <div class="col-12 col-md-3 mt-3">
+                        <h4>Total</h4>
+                        <h5 class="text-primary">Rp total price</h5>
+                    </div>
+                    <div class="col-12 col-md-9 my-3">
+                        <div class="row row-cols-1" id="content-shopping-carts">
+                            <div class="col mb-4">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-2">
+                                                <img
+                                                src="https://cf.shopee.co.id/file/dbb2872191054ae321c5f698eed7b9c7"
+                                                alt="Celana Wanita Ok" class="card-img-top">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Celana Wanita Ok</h5>
+                                                <p class="card-text">
+                                                    <span class="location d-block font-weight-bold text-success">Rp
+                                                        650.000</span>
+                                                </p>
+                                                <a class="btn btn-danger mt-3"><i class="material-icons text-white"
+                                                        style="font-size: 16px">delete</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 p-3">
+                                            <div class="form-group"><label>Jumlah</label><input
+                                                    class="form-control text-right" type="number"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
