@@ -9,7 +9,7 @@ let minPrice = null;
 let maxPrice = null;
 let WishListPage = false;
 let cartPage = false;
-let inCartSize = 0;
+
 
 if (localStorage.getItem('products') !== null ) {
     products = JSON.parse(localStorage.getItem('products'));
@@ -25,24 +25,6 @@ function updateStorage() {
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
-
-/*
-function parseOfferings(prodoff) {
-    switch (prodoff) {
-        case 'gratong':
-            return 'Gratis Ongkir';
-        case 'cashback':
-            return 'Cashback';
-        case 'disc':
-            return 'Diskon';
-    
-        default:
-            alert('Error: Offerings not found')
-            break;
-    }
-}
-*/
 
 function parseCategory(prodcat) {
     switch (prodcat) {
@@ -192,9 +174,9 @@ function getProd(product) {
             product.inCart = product.inCart + 1;
         }
 
-        inCartSize = inCartSize + 1;
+        updateStorage();
 
-        cardUpdate();
+        cartUpdate();
 
         console.log();
         
@@ -211,12 +193,27 @@ function getProd(product) {
     return col;
 }
 
-function cardUpdate() {
+function cartUpdate() {
+    let badgeCart = document.getElementById('badgeCart');
+
+    let inCartSize = 0;
+
+    let filter = [...products];
+
+    filter.forEach(function(product) {
+        if (product.inCart !== undefined) {
+            inCartSize += product.inCart;
+        }
+        return inCartSize;
+    })
+
+    console.log(inCartSize)
+
     if (inCartSize === 0) {
-        document.getElementById('badgeCart').classList.add('d-none');
+        badgeCart.classList.add('d-none');
     } else {
-        document.getElementById('badgeCart').classList.remove('d-none');
-        document.getElementById('badgeCart').innerText = inCartSize.toString();
+        badgeCart.classList.remove('d-none');
+        badgeCart.innerText = inCartSize.toString();
     }
     
 }
@@ -281,6 +278,7 @@ function showContent() {
 }
 
 function getShoppingCart(product) {
+
     let col = document.createElement('div');
     col.classList.add('col');
     col.classList.add('mb-4');
@@ -300,13 +298,115 @@ function getShoppingCart(product) {
     let img = document.createElement('img');
     img.src = product.prodimg;
     img.alt = product.prodname;
+    img.classList.add('card-img-top');
+
+    imgCol.append(img);
+    cardRow.append(imgCol);
+
+    let desc = document.createElement('div');
+    desc.classList.add('col-md-8');
+
+    let cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+
+    let cardTitle = document.createElement('h5');
+    cardTitle.classList.add('card-title');
+    cardTitle.innerText = product.prodname;
+
+    let cardPrice = document.createElement('p');
+    cardPrice.innerHTML = `<span class="location d-block font-weight-bold text-success">Rp ${numberWithCommas(product.prodprice)}</span>`;
+
+    let cardDelete = document.createElement('a');
+    cardDelete.classList.add('btn');
+    cardDelete.classList.add('btn-danger');
+    cardDelete.classList.add('mt-3');
+    cardDelete.innerHTML = '<i class="material-icons text-white" style="font-size: 16px">delete</i>';
+
+    cardDelete.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        let confirmDelete = confirm('Are you sure you want to delete this item?');
+
+        if (confirmDelete = true) {
+            delete product.inCart;
+            showShoppingCart();
+            cartUpdate();
+            updateStorage();
+        } else {
+            return;
+        }
+    })
+
+    cardBody.append(cardTitle);
+    cardBody.append(cardPrice);
+    cardBody.append(cardDelete);
+    desc.append(cardBody);
+    cardRow.append(desc);
+
+    let amountCol = document.createElement('div');
+    amountCol.classList.add('col-md-2');
+    amountCol.classList.add('p-3');
+
+    let formAmount = document.createElement('div');
+    formAmount.classList.add('form-group');
+
+    let label = document.createElement('label');
+    label.innerText = 'Jumlah';
+
+    let amountInput = document.createElement('input');
+    amountInput.type = 'number';
+    amountInput.classList.add('form-control');
+    amountInput.classList.add('text-right');
+    amountInput.id = 'itemCartAmount';
+    amountInput.min = '1';
+    amountInput.style = 'user-select: none;'
+    amountInput.value = product.inCart;
+
+    amountInput.addEventListener('change', function() {
+        product.inCart = parseInt(amountInput.value);
+        updateStorage();
+        showShoppingCart();
+        cartUpdate();
+    })
+
+
+
+    // amountInput.addEventListener('click')
+
+
+    formAmount.append(label);
+    formAmount.append(amountInput);
+    amountCol.append(formAmount);
+    cardRow.append(amountCol);
+
+    card.append(cardRow)
+
+    col.append(card);
+
+    return col;
 }
 
 function showShoppingCart() {
     let lel = document.getElementById('content-shopping-carts');
     lel.innerHTML = '';
 
+    let filter = [...products];
 
+    filter = filter.filter(product => product.inCart > 0 || product.inCart !== undefined);
+    console.log(filter)
+
+    filter.forEach(product => {
+        // console.log(filter)
+        lel.prepend(getShoppingCart(product));
+    })
+
+    let totalPrice = document.getElementById('rp-total-price');
+    let price = 0;
+    filter.forEach(product => {
+        price = price + (product.prodprice*product.inCart);
+    });
+
+    totalPrice.innerText = `Rp ${numberWithCommas(price)}`;
 }
 
 document.getElementById('search').addEventListener('submit', function(e) {  
@@ -382,8 +482,6 @@ document.getElementById('formFilter').addEventListener('click', function() {
     showContent();
     
 })
-
-
 
 function changeContent() {
 
@@ -495,9 +593,9 @@ document.getElementById('navCart').addEventListener('click', function(e) {
 
     changeContent();
 
-    showContent();
+    showShoppingCart();
 })
 
-cardUpdate();
+cartUpdate();
 wishlistUpdate();
 showContent();

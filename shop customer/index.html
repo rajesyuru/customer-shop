@@ -173,7 +173,7 @@
                 <div class="row d-none" id="cart-page">
                     <div class="col-12 col-md-3 mt-3">
                         <h4>Total</h4>
-                        <h5 class="text-primary">Rp total price</h5>
+                        <h5 class="text-primary" id="rp-total-price">Rp total price</h5>
                     </div>
                     <div class="col-12 col-md-9 my-3">
                         <div class="row row-cols-1" id="content-shopping-carts">
@@ -197,8 +197,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2 p-3">
-                                            <div class="form-group"><label>Jumlah</label><input
-                                                    class="form-control text-right" type="number"></div>
+                                            <div class="form-group">
+                                                <label>Jumlah</label>
+                                                <input class="form-control text-right" type="number" id="itemCartAmount" min="1">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
