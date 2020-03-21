@@ -9,6 +9,7 @@ let minPrice = null;
 let maxPrice = null;
 let WishListPage = false;
 let cartPage = false;
+let inCartSize = 0;
 
 if (localStorage.getItem('products') !== null ) {
     products = JSON.parse(localStorage.getItem('products'));
@@ -177,13 +178,25 @@ function getProd(product) {
     addToCart.classList.add('btn');
     addToCart.classList.add('btn-primary');
     addToCart.classList.add('w-100');
-    addToCart.innerText = 'Add to cart';
+    addToCart.innerHTML = '<small>Add to cart</small>'
 
     footer.append(addToCart);
 
     addToCart.addEventListener('click', function(e) {
         e.preventDefault();
 
+        if (product.inCart === undefined) {
+            product.inCart = 0;
+            product.inCart = product.inCart + 1;
+        } else {
+            product.inCart = product.inCart + 1;
+        }
+
+        inCartSize = inCartSize + 1;
+
+        cardUpdate();
+
+        console.log();
         
     })
 
@@ -199,7 +212,13 @@ function getProd(product) {
 }
 
 function cardUpdate() {
-
+    if (inCartSize === 0) {
+        document.getElementById('badgeCart').classList.add('d-none');
+    } else {
+        document.getElementById('badgeCart').classList.remove('d-none');
+        document.getElementById('badgeCart').innerText = inCartSize.toString();
+    }
+    
 }
 
 function wishlistUpdate() {
@@ -457,7 +476,7 @@ document.getElementById('home').addEventListener('click', function(e) {
         return;
     }
 
-    console.log('this command doesnt run')
+    // console.log('this command doesnt run')
 
     changeContent();
 
@@ -479,5 +498,6 @@ document.getElementById('navCart').addEventListener('click', function(e) {
     showContent();
 })
 
+cardUpdate();
 wishlistUpdate();
 showContent();
