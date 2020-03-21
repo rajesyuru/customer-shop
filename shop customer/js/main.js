@@ -592,7 +592,7 @@ document.getElementById('navCart').addEventListener('click', function(e) {
     }
 
     changeContent();
-
+    
     showShoppingCart();
 })
 
