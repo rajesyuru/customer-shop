@@ -76,7 +76,6 @@ function showContent() {
                     let col = document.createElement('div');
                     col.classList.add('col-12');
                     col.classList.add('col-md-6');
-
                     col.append(iFrame)
 
                     elVideos.append(col);
