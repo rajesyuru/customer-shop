@@ -3,13 +3,17 @@ let contentShow = 'list'; // 'list' atau 'detail'
 let idSelected = null;
 let currentPage = 1;
 var tempScrollTop = 0;
+let movSearch = '';
+
+let elMovieListContent = document.querySelector('#movie-list .content');
 
 $(window).on('scroll', function () {
+    
     if (contentShow === 'list') {
         if ($(window).scrollTop() >= $(
             '.container-fluid').offset().top + $('.container-fluid').
                 outerHeight() - window.innerHeight) {
-
+                    
             currentPage = currentPage + 1;
             getMovieLists();
             showContent();
@@ -17,8 +21,18 @@ $(window).on('scroll', function () {
     }
 });
 
+document.querySelector('[name="search"]').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-const elMovieListContent = document.querySelector('#movie-list .content');
+    movSearch = document.querySelector('[name="search"]').value;
+
+    elMovieListContent = '';
+
+    searchMovieLists();
+})
+
+
+
 
 function showContent() {
     if (contentShow === 'list') {
@@ -159,6 +173,23 @@ document.querySelector('.navbar-brand').addEventListener('click', function (e) {
 function getMovieLists() {
 
     let movieUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=b243dc06bac1b60355d79c1938f4da27&language=en-US&page=${currentPage.toString()}`;
+
+    fetch(movieUrl)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            const movies = data.results;
+
+            movies.forEach(movie => {
+                elMovieListContent.append(getCard(movie));
+            });
+        });
+}
+
+function searchMovieLists() {
+
+    let movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=b243dc06bac1b60355d79c1938f4da27&language=en-US&query=${movSearch.toLowerCase()}&page=${currentPage.toString()}&include_adult=true`;
 
     fetch(movieUrl)
         .then(response => {

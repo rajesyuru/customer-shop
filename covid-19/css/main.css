@@ -1,0 +1,17 @@
+tbody {
+    user-select: none;
+}
+
+thead th {
+    cursor: pointer;
+    user-select: none;
+}
+
+span.material-icons {
+    
+    transition: all 200ms;
+}
+
+span.material-icons.desc {
+    transform: rotateZ(180deg);
+}
